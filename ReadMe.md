@@ -6,6 +6,8 @@ You can add multiple snow scenes, and there is a property called Settings.Additi
 higher up in a scene, so you can longer duration of snow falling.
 
 # News
+12.16.2023: Added an Async method RandomizeAsync to the Randomizer class.
+
 12.15.2023: Added the output filename to the RandomizationResult object returned from Randomize.
 
 
