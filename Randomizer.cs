@@ -278,6 +278,9 @@ namespace DataJuggler.RandomUSD
                                     string filePath = Path.Combine(settings.OutputFolderPath, settings.OutputFileName);
                                     filePath = FileHelper.CreateFileNameWithPartialGuid(filePath, 12);
 
+                                    // Set the OutputFileName
+                                    result.OutputFileName = filePath;
+
                                     // Export the contents
                                     string fileContents = TextHelper.ExportTextLines(lines);
                                     File.WriteAllText(filePath, fileContents);

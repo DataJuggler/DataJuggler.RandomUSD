@@ -39,7 +39,7 @@ namespace DataJuggler.RandomUSD
         private int additionalZ;
         private int additionalScale;
         private string objectName;
-        private bool smallScale;
+        private bool smallScale;        
         #endregion
 
         #region Constructor
