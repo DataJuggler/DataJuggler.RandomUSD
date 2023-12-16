@@ -77,7 +77,7 @@ namespace DataJuggler.RandomUSD
                     if (NullHelper.Exists(settings))
                     {
                         // locals
-                        string path = settings.EmptyUSDPath;
+                        string path = settings.EmptyUSDPath;                        
                         string fileText = File.ReadAllText(path);
                         int count = 0;
                         int objectStartLineNumber = 0;
@@ -291,6 +291,32 @@ namespace DataJuggler.RandomUSD
                             }
                         }
                     }
+                }
+                catch (Exception error)
+                {
+                    // store the error
+                    result.Error = error;
+                }
+
+                // return value
+                return result;
+            }
+            #endregion
+
+            #region Randomize(Settings settings)
+            /// <summary>
+            /// Randomly position objects in a USD file.
+            /// </summary>
+            /// <returns></returns>
+            public static async Task<RandomizationResult> RandomizeAsync(Settings settings)
+            {
+                // initial value
+                RandomizationResult result = new RandomizationResult();
+
+                try
+                {
+                    // run async
+                    result = await Task.Run(() => Randomize(settings));
                 }
                 catch (Exception error)
                 {
