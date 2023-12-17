@@ -176,7 +176,7 @@ namespace DataJuggler.RandomUSD
 
                                  // Create the shufflers
                                 RandomShuffler.RandomShuffler shufflerX = new RandomShuffler.RandomShuffler(settings.TranslateXMin, settings.TranslateXMax, 3);
-                                RandomShuffler.LargeNumberShuffler shufflerY = new RandomShuffler.LargeNumberShuffler(6, settings.TranslateYMin, settings.TranslateYMax, NumberOutOfRangeOptionEnum.ReturnModulus);
+                                RandomShuffler.LargeNumberShuffler shufflerY = new RandomShuffler.LargeNumberShuffler(settings.TranslateYMax.ToString().Length, settings.TranslateYMin, settings.TranslateYMax, NumberOutOfRangeOptionEnum.ReturnModulus);
                                 RandomShuffler.RandomShuffler shufflerZ = new RandomShuffler.RandomShuffler(settings.TranslateZMin, settings.TranslateZMax, 3);
 
                                 // Create the rotate shuffler
