@@ -175,9 +175,9 @@ namespace DataJuggler.RandomUSD
                                 lines[objectStartLineNumber - 1].Text = lines[objectStartLineNumber - 1].Text.Replace(settings.ObjectTagName, settings.ObjectName);
 
                                  // Create the shufflers
-                                RandomShuffler.LargeNumberShuffler shufflerX = new RandomShuffler.LargeNumberShuffler(6, settings.TranslateXMin, settings.TranslateXMax, NumberOutOfRangeOptionEnum.ReturnModulus);
+                                RandomShuffler.RandomShuffler shufflerX = new RandomShuffler.RandomShuffler(settings.TranslateXMin, settings.TranslateXMax, 3);
                                 RandomShuffler.LargeNumberShuffler shufflerY = new RandomShuffler.LargeNumberShuffler(6, settings.TranslateYMin, settings.TranslateYMax, NumberOutOfRangeOptionEnum.ReturnModulus);
-                                RandomShuffler.LargeNumberShuffler shufflerZ = new RandomShuffler.LargeNumberShuffler(6, settings.TranslateZMin, settings.TranslateZMax, NumberOutOfRangeOptionEnum.ReturnModulus);
+                                RandomShuffler.RandomShuffler shufflerZ = new RandomShuffler.RandomShuffler(settings.TranslateZMin, settings.TranslateZMax, 3);
 
                                 // Create the rotate shuffler
                                 RandomShuffler.RandomShuffler shufflerScale = new RandomShuffler.RandomShuffler(settings.ScaleMin, settings.ScaleMax, 3);
@@ -198,9 +198,9 @@ namespace DataJuggler.RandomUSD
                                 lines[scaleLineNumber - 1].Text = lines[scaleLineNumber - 1].Text.Replace("[ScaleX]", scaleX).Replace("[ScaleY]", scaleY).Replace("[ScaleZ]", scaleZ);
 
                                 // get some values
-                                int x = shufflerX.PullNumber() + settings.AdditionalX;
+                                int x = shufflerX.PullNextItem() + settings.AdditionalX;
                                 int y = shufflerY.PullNumber() + settings.AdditionalY;
-                                int z = shufflerZ.PullNumber() + settings.AdditionalZ;
+                                int z = shufflerZ.PullNextItem() + settings.AdditionalZ;
 
                                 // set the text for the Translate
                                 lines[translateLineNumber - 1].Text = lines[translateLineNumber - 1].Text.Replace("[TranslateX]", x.ToString()).Replace("[TranslateY]", y.ToString()).Replace("[TranslateZ]", z.ToString());
@@ -262,9 +262,9 @@ namespace DataJuggler.RandomUSD
                                             else if (count == objectTranslateLineNumber)
                                             {
                                                 // get some values
-                                                x = shufflerX.PullNumber() + settings.AdditionalX;
+                                                x = shufflerX.PullNextItem() + settings.AdditionalX;
                                                 y = shufflerY.PullNumber() + settings.AdditionalY;
-                                                z = shufflerZ.PullNumber() + settings.AdditionalZ;
+                                                z = shufflerZ.PullNextItem() + settings.AdditionalZ;
 
                                                 // Set the Text
                                                 textLine.Text = textLine.Text.Replace("[TranslateX]", x.ToString()).Replace("[TranslateY]", y.ToString()).Replace("[TranslateZ]", z.ToString());
