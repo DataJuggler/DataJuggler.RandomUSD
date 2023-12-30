@@ -34,12 +34,27 @@ namespace DataJuggler.RandomUSD
         private string lineBeforeLastBracketText;
         private string scaleTagText;
         private string translateTagText;
+        private string forceTagText;
+        private string velocityTagText;
         private int additionalX;
         private int additionalY;
         private int additionalZ;
         private int additionalScale;
         private string objectName;
-        private bool smallScale;        
+        private bool smallScale;
+        private bool enableForce;
+        private int velocityXMin;
+        private int velocityYMin;
+        private int velocityZMin;
+        private int velocityXMax;
+        private int velocityYMax;
+        private int velocityZMax;
+        private int forceXMin;
+        private int forceYMin;
+        private int forceZMin;
+        private int forceXMax;
+        private int forceYMax;
+        private int forceZMax;
         #endregion
 
         #region Constructor
@@ -51,6 +66,8 @@ namespace DataJuggler.RandomUSD
             // Default values
             ScaleTagText = "[ScaleX]";
             TranslateTagText = "[TranslateX]";
+            ForceTagText = "[ForceX]";
+            VelocityTagText = "[VelocityX]";
             ScaleMin = 1;
             ScaleMax = 5;            
         }
@@ -110,6 +127,202 @@ namespace DataJuggler.RandomUSD
             {
                 get { return emptyUSDPath; }
                 set { emptyUSDPath = value; }
+            }
+            #endregion
+            
+            #region EnableForce
+            /// <summary>
+            /// This property gets or sets the value for 'EnableForce'.
+            /// </summary>
+            public bool EnableForce
+            {
+                get { return enableForce; }
+                set { enableForce = value; }
+            }
+            #endregion
+
+            #region EnableForceX
+            /// <summary>
+            /// This read only property returns true if ForceXMin or Max is not zero
+            /// </summary>
+            public bool EnableForceX
+            {
+                
+                get
+                {
+                    // initial value
+                    bool enableForceX = ((ForceXMin != 0) || (ForceYMax != 0));
+                    
+                    // return value
+                    return enableForceX;
+                }
+            }
+            #endregion
+
+            #region EnableForceY
+            /// <summary>
+            /// This read only property returns true if ForceYMin or Max is not zero
+            /// </summary>
+            public bool EnableForceY
+            {
+                
+                get
+                {
+                    // initial value
+                    bool enableForceY = ((ForceYMin != 0) || (ForceYMax != 0));
+                    
+                    // return value
+                    return enableForceY;
+                }
+            }
+            #endregion
+
+            #region EnableForceZ
+            /// <summary>
+            /// This read only property returns true if ForceZMin or Max is not zero
+            /// </summary>
+            public bool EnableForceZ
+            {
+                
+                get
+                {
+                    // initial value
+                    bool enableForceZ = ((ForceZMin != 0) || (ForceZMax != 0));
+                    
+                    // return value
+                    return enableForceZ;
+                }
+            }
+            #endregion
+            
+            #region EnableVelocityX
+            /// <summary>
+            /// This read only property returns true if VelocityXMin or Max is not zero
+            /// </summary>
+            public bool EnableVelocityX
+            {
+                
+                get
+                {
+                    // initial value
+                    bool enableVelocityX = ((VelocityXMin != 0) || (VelocityYMax != 0));
+                    
+                    // return value
+                    return enableVelocityX;
+                }
+            }
+            #endregion
+
+            #region EnableVelocityY
+            /// <summary>
+            /// This read only property returns true if VelocityYMin or Max is not zero
+            /// </summary>
+            public bool EnableVelocityY
+            {
+                
+                get
+                {
+                    // initial value
+                    bool enableVelocityY = ((VelocityYMin != 0) || (VelocityYMax != 0));
+                    
+                    // return value
+                    return enableVelocityY;
+                }
+            }
+            #endregion
+
+            #region EnableVelocityZ
+            /// <summary>
+            /// This read only property returns true if VelocityZMin or Max is not zero
+            /// </summary>
+            public bool EnableVelocityZ
+            {
+                
+                get
+                {
+                    // initial value
+                    bool enableVelocityZ = ((VelocityZMin != 0) || (VelocityZMax != 0));
+                    
+                    // return value
+                    return enableVelocityZ;
+                }
+            }
+            #endregion
+            
+            #region ForceTagText
+            /// <summary>
+            /// This property gets or sets the value for 'ForceTagText'.
+            /// </summary>
+            public string ForceTagText
+            {
+                get { return forceTagText; }
+                set { forceTagText = value; }
+            }
+            #endregion
+            
+            #region ForceXMax
+            /// <summary>
+            /// This property gets or sets the value for 'ForceXMax'.
+            /// </summary>
+            public int ForceXMax
+            {
+                get { return forceXMax; }
+                set { forceXMax = value; }
+            }
+            #endregion
+            
+            #region ForceXMin
+            /// <summary>
+            /// This property gets or sets the value for 'ForceXMin'.
+            /// </summary>
+            public int ForceXMin
+            {
+                get { return forceXMin; }
+                set { forceXMin = value; }
+            }
+            #endregion
+            
+            #region ForceYMax
+            /// <summary>
+            /// This property gets or sets the value for 'ForceYMax'.
+            /// </summary>
+            public int ForceYMax
+            {
+                get { return forceYMax; }
+                set { forceYMax = value; }
+            }
+            #endregion
+            
+            #region ForceYMin
+            /// <summary>
+            /// This property gets or sets the value for 'ForceYMin'.
+            /// </summary>
+            public int ForceYMin
+            {
+                get { return forceYMin; }
+                set { forceYMin = value; }
+            }
+            #endregion
+            
+            #region ForceZMax
+            /// <summary>
+            /// This property gets or sets the value for 'ForceZMax'.
+            /// </summary>
+            public int ForceZMax
+            {
+                get { return forceZMax; }
+                set { forceZMax = value; }
+            }
+            #endregion
+            
+            #region ForceZMin
+            /// <summary>
+            /// This property gets or sets the value for 'ForceZMin'.
+            /// </summary>
+            public int ForceZMin
+            {
+                get { return forceZMin; }
+                set { forceZMin = value; }
             }
             #endregion
             
@@ -297,6 +510,83 @@ namespace DataJuggler.RandomUSD
             {
                 get { return translateZMin; }
                 set { translateZMin = value; }
+            }
+            #endregion
+            
+            #region VelocityTagText
+            /// <summary>
+            /// This property gets or sets the value for 'VelocityTagText'.
+            /// </summary>
+            public string VelocityTagText
+            {
+                get { return velocityTagText; }
+                set { velocityTagText = value; }
+            }
+            #endregion
+            
+            #region VelocityXMax
+            /// <summary>
+            /// This property gets or sets the value for 'VelocityXMax'.
+            /// </summary>
+            public int VelocityXMax
+            {
+                get { return velocityXMax; }
+                set { velocityXMax = value; }
+            }
+            #endregion
+            
+            #region VelocityXMin
+            /// <summary>
+            /// This property gets or sets the value for 'VelocityXMin'.
+            /// </summary>
+            public int VelocityXMin
+            {
+                get { return velocityXMin; }
+                set { velocityXMin = value; }
+            }
+            #endregion
+            
+            #region VelocityYMax
+            /// <summary>
+            /// This property gets or sets the value for 'VelocityYMax'.
+            /// </summary>
+            public int VelocityYMax
+            {
+                get { return velocityYMax; }
+                set { velocityYMax = value; }
+            }
+            #endregion
+            
+            #region VelocityYMin
+            /// <summary>
+            /// This property gets or sets the value for 'VelocityYMin'.
+            /// </summary>
+            public int VelocityYMin
+            {
+                get { return velocityYMin; }
+                set { velocityYMin = value; }
+            }
+            #endregion
+            
+            #region VelocityZMax
+            /// <summary>
+            /// This property gets or sets the value for 'VelocityZMax'.
+            /// </summary>
+            public int VelocityZMax
+            {
+                get { return velocityZMax; }
+                set { velocityZMax = value; }
+            }
+            #endregion
+            
+            #region VelocityZMin
+            /// <summary>
+            /// This property gets or sets the value for 'VelocityZMin'.
+            /// </summary>
+            public int VelocityZMin
+            {
+                get { return velocityZMin; }
+                set { velocityZMin = value; }
             }
             #endregion
             
