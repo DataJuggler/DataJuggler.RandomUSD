@@ -55,6 +55,7 @@ namespace DataJuggler.RandomUSD
         private int forceXMax;
         private int forceYMax;
         private int forceZMax;
+        private int forcePercent;
         #endregion
 
         #region Constructor
@@ -246,6 +247,17 @@ namespace DataJuggler.RandomUSD
                     // return value
                     return enableVelocityZ;
                 }
+            }
+            #endregion
+            
+            #region ForcePercent
+            /// <summary>
+            /// This property gets or sets the value for 'ForcePercent'.
+            /// </summary>
+            public int ForcePercent
+            {
+                get { return forcePercent; }
+                set { forcePercent = value; }
             }
             #endregion
             

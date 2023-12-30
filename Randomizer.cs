@@ -237,10 +237,23 @@ namespace DataJuggler.RandomUSD
                                 RandomShuffler.RandomShuffler forceXShuffler = null;
                                 RandomShuffler.RandomShuffler forceYShuffler = null;
                                 RandomShuffler.RandomShuffler forceZShuffler = null;
+                                RandomShuffler.RandomShuffler forcePercentShuffler = null;
+
+                                // locals
+                                int forcePercent = 0;
+                                int forceX = 0;
+                                int forceY = 0;
+                                int forceZ = 0;
+                                int velocityX = 0;
+                                int velocityY = 0;
+                                int velocityZ = 0;
 
                                 // If the value for the property settings.EnableForce is true
                                 if (settings.EnableForce)
                                 {
+                                    // Create the forcePercentShuffler
+                                    forcePercentShuffler = new RandomShuffler.RandomShuffler(1, 100, 3);
+
                                     // if VelocityXMin or Max is not zero
                                     if (settings.EnableVelocityX)
                                     {
@@ -310,8 +323,15 @@ namespace DataJuggler.RandomUSD
                                     // if ForceXMin or Max is not zero
                                     if (settings.EnableForceX)
                                     {
-                                        // pull a value
-                                        int forceX = forceXShuffler.PullNextItem();
+                                        // Pull an item
+                                        forcePercent = forcePercentShuffler.PullNextItem();
+
+                                        // if in range
+                                        if (forcePercent >= settings.ForcePercent)
+                                        {
+                                            // pull an item
+                                            forceX = forceXShuffler.PullNextItem();
+                                        }
 
                                         // set the value
                                         lines[forceLineNumber - 1].Text = lines[forceLineNumber - 1].Text.Replace("[ForceX]", forceX.ToString());
@@ -325,8 +345,15 @@ namespace DataJuggler.RandomUSD
                                     // if ForceYMin or Max is not zero
                                     if (settings.EnableForceY)
                                     {
-                                        // pull a value
-                                        int forceY = forceYShuffler.PullNextItem();
+                                        // Pull an item
+                                        forcePercent = forcePercentShuffler.PullNextItem();
+
+                                        // if in range
+                                        if (forcePercent >= settings.ForcePercent)
+                                        {
+                                            // pull a value
+                                            forceY = forceYShuffler.PullNextItem();
+                                        }
 
                                         // set the value
                                         lines[forceLineNumber - 1].Text = lines[forceLineNumber - 1].Text.Replace("[ForceY]", forceY.ToString());
@@ -340,8 +367,15 @@ namespace DataJuggler.RandomUSD
                                     // if ForceZMin or Max is not zero
                                     if (settings.EnableForceZ)
                                     {
-                                        // pull a value
-                                        int forceZ = forceZShuffler.PullNextItem();
+                                        // Pull an item
+                                        forcePercent = forcePercentShuffler.PullNextItem();
+
+                                        // if in range
+                                        if (forcePercent >= settings.ForcePercent)
+                                        {
+                                            // pull a value
+                                            forceZ = forceZShuffler.PullNextItem();
+                                        }
 
                                         // set the value
                                         lines[forceLineNumber - 1].Text = lines[forceLineNumber - 1].Text.Replace("[ForceZ]", forceZ.ToString());
@@ -355,8 +389,15 @@ namespace DataJuggler.RandomUSD
                                     // if VelocityXMin or Max is not zero
                                     if (settings.EnableVelocityX)
                                     {
-                                        // pull a value
-                                        int velocityX = velocityXShuffler.PullNextItem();
+                                        // Pull an item
+                                        forcePercent = forcePercentShuffler.PullNextItem();
+
+                                        // if in range
+                                        if (forcePercent >= settings.ForcePercent)
+                                        {
+                                            // pull a value
+                                            velocityX = velocityXShuffler.PullNextItem();
+                                        }
 
                                         // set the value
                                         lines[velocityLineNumber - 1].Text = lines[velocityLineNumber - 1].Text.Replace("[VelocityX]", velocityX.ToString());
@@ -370,8 +411,15 @@ namespace DataJuggler.RandomUSD
                                     // if VelocityYMin or Max is not zero
                                     if (settings.EnableVelocityY)
                                     {
-                                        // pull a value
-                                        int velocityY = velocityYShuffler.PullNextItem();
+                                        // Pull an item
+                                        forcePercent = forcePercentShuffler.PullNextItem();
+
+                                        // if in range
+                                        if (forcePercent >= settings.ForcePercent)
+                                        {
+                                            // pull a value
+                                            velocityY = velocityYShuffler.PullNextItem();
+                                        }
 
                                         // set the value
                                         lines[velocityLineNumber - 1].Text = lines[velocityLineNumber - 1].Text.Replace("[VelocityY]", velocityY.ToString());
@@ -385,8 +433,15 @@ namespace DataJuggler.RandomUSD
                                     // if VelocityZMin or Max is not zero
                                     if (settings.EnableVelocityZ)
                                     {
-                                        // pull a value
-                                        int velocityZ = velocityZShuffler.PullNextItem();
+                                        // Pull an item
+                                        forcePercent = forcePercentShuffler.PullNextItem();
+
+                                        // if in range
+                                        if (forcePercent >= settings.ForcePercent)
+                                        {
+                                            // pull a value
+                                            velocityZ = velocityZShuffler.PullNextItem();
+                                        }
 
                                         // set the value
                                         lines[velocityLineNumber - 1].Text = lines[velocityLineNumber - 1].Text.Replace("[VelocityZ]", velocityZ.ToString());
@@ -424,6 +479,12 @@ namespace DataJuggler.RandomUSD
 
                                         // reset
                                         count = 0;
+                                        forceX = 0;
+                                        forceY = 0;
+                                        forceZ = 0;
+                                        velocityX = 0;
+                                        velocityY = 0;
+                                        velocityZ = 0;
 
                                         // Iterate the collection of TextLine objects
                                         foreach (TextLine textLine in cloneOfObjectLines2)
@@ -476,8 +537,15 @@ namespace DataJuggler.RandomUSD
                                                     // if ForceXMin or Max is not zero
                                                     if (settings.EnableForceX)
                                                     {
-                                                        // pull a value
-                                                        int forceX = forceXShuffler.PullNextItem();
+                                                        // get the force percent
+                                                        forcePercent = forcePercentShuffler.PullNextItem();
+
+                                                        // if in range
+                                                        if (forcePercent >= settings.ForcePercent)
+                                                        {
+                                                            // pull a value
+                                                            forceX = forceXShuffler.PullNextItem();
+                                                        }
 
                                                         // set the value
                                                         textLine.Text = textLine.Text.Replace("[ForceX]", forceX.ToString());
@@ -491,8 +559,15 @@ namespace DataJuggler.RandomUSD
                                                     // if ForceYMin or Max is not zero
                                                     if (settings.EnableForceY)
                                                     {
-                                                        // pull a value
-                                                        int forceY = forceYShuffler.PullNextItem();
+                                                        // get the force percent
+                                                        forcePercent = forcePercentShuffler.PullNextItem();
+
+                                                        // if in range
+                                                        if (forcePercent >= settings.ForcePercent)
+                                                        {
+                                                            // pull a value
+                                                            forceY = forceYShuffler.PullNextItem();
+                                                        }
 
                                                         // set the value
                                                         textLine.Text = textLine.Text.Replace("[ForceY]", forceY.ToString());
@@ -506,8 +581,15 @@ namespace DataJuggler.RandomUSD
                                                     // if ForceZMin or Max is not zero
                                                     if (settings.EnableForceZ)
                                                     {
-                                                        // pull a value
-                                                        int forceZ = forceZShuffler.PullNextItem();
+                                                        // get the force percent
+                                                        forcePercent = forcePercentShuffler.PullNextItem();
+
+                                                        // if in range
+                                                        if (forcePercent >= settings.ForcePercent)
+                                                        {
+                                                            // pull a value
+                                                            forceZ = forceZShuffler.PullNextItem();
+                                                        }
 
                                                         // set the value
                                                         textLine.Text = textLine.Text.Replace("[ForceZ]", forceZ.ToString());
@@ -532,8 +614,15 @@ namespace DataJuggler.RandomUSD
                                                     // if VelocityXMin or Max is not zero
                                                     if (settings.EnableVelocityX)
                                                     {
-                                                        // pull a value
-                                                        int velocityX = velocityXShuffler.PullNextItem();
+                                                        // get the force percent
+                                                        forcePercent = forcePercentShuffler.PullNextItem();
+
+                                                        // if in range
+                                                        if (forcePercent >= settings.ForcePercent)
+                                                        {
+                                                            // pull a value
+                                                            velocityX = velocityXShuffler.PullNextItem();
+                                                        }
 
                                                         // set the value
                                                         textLine.Text = textLine.Text.Replace("[VelocityX]", velocityX.ToString());
@@ -547,8 +636,15 @@ namespace DataJuggler.RandomUSD
                                                     // if VelocityYMin or Max is not zero
                                                     if (settings.EnableVelocityY)
                                                     {
-                                                        // pull a value
-                                                        int velocityY = velocityYShuffler.PullNextItem();
+                                                        // get the force percent
+                                                        forcePercent = forcePercentShuffler.PullNextItem();
+
+                                                        // if in range
+                                                        if (forcePercent >= settings.ForcePercent)
+                                                        {
+                                                            // pull a value
+                                                            velocityY = velocityYShuffler.PullNextItem();
+                                                        }
 
                                                         // set the value
                                                         textLine.Text = textLine.Text.Replace("[VelocityY]", velocityY.ToString());
@@ -562,8 +658,15 @@ namespace DataJuggler.RandomUSD
                                                     // if VelocityZMin or Max is not zero
                                                     if (settings.EnableVelocityZ)
                                                     {
-                                                        // pull a value
-                                                        int velocityZ = velocityZShuffler.PullNextItem();
+                                                        // get the force percent
+                                                        forcePercent = forcePercentShuffler.PullNextItem();
+
+                                                        // if in range
+                                                        if (forcePercent >= settings.ForcePercent)
+                                                        {
+                                                            // pull a value
+                                                            velocityZ = velocityZShuffler.PullNextItem();
+                                                        }
 
                                                         // set the value
                                                         textLine.Text = textLine.Text.Replace("[VelocityZ]", velocityZ.ToString());
