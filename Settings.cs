@@ -261,6 +261,24 @@ namespace DataJuggler.RandomUSD
             }
             #endregion
             
+            #region ForcePercentReverse
+            /// <summary>
+            /// This read only property returns 100 - ForcePercent.
+            /// </summary>
+            public int ForcePercentReverse
+            {
+                
+                get
+                {
+                    // initial value
+                    int forcePercentReverse = 100 - ForcePercent;
+                    
+                    // return value
+                    return forcePercentReverse;
+                }
+            }
+            #endregion
+            
             #region ForceTagText
             /// <summary>
             /// This property gets or sets the value for 'ForceTagText'.

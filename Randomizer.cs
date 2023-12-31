@@ -95,7 +95,6 @@ namespace DataJuggler.RandomUSD
                         int objectCount = 0;
                         int additionalY = settings.AdditionalY;
                         int objectsToCreate = settings.ObjectsToCreate;
-                       
 
                         // If the fileText string exists
                         if (TextHelper.Exists(fileText))
@@ -327,7 +326,7 @@ namespace DataJuggler.RandomUSD
                                         forcePercent = forcePercentShuffler.PullNextItem();
 
                                         // if in range
-                                        if (forcePercent >= settings.ForcePercent)
+                                        if (forcePercent >= settings.ForcePercentReverse)
                                         {
                                             // pull an item
                                             forceX = forceXShuffler.PullNextItem();
@@ -349,7 +348,7 @@ namespace DataJuggler.RandomUSD
                                         forcePercent = forcePercentShuffler.PullNextItem();
 
                                         // if in range
-                                        if (forcePercent >= settings.ForcePercent)
+                                        if (forcePercent >= settings.ForcePercentReverse)
                                         {
                                             // pull a value
                                             forceY = forceYShuffler.PullNextItem();
@@ -371,7 +370,7 @@ namespace DataJuggler.RandomUSD
                                         forcePercent = forcePercentShuffler.PullNextItem();
 
                                         // if in range
-                                        if (forcePercent >= settings.ForcePercent)
+                                        if (forcePercent >= settings.ForcePercentReverse)
                                         {
                                             // pull a value
                                             forceZ = forceZShuffler.PullNextItem();
@@ -393,7 +392,7 @@ namespace DataJuggler.RandomUSD
                                         forcePercent = forcePercentShuffler.PullNextItem();
 
                                         // if in range
-                                        if (forcePercent >= settings.ForcePercent)
+                                        if (forcePercent >= settings.ForcePercentReverse)
                                         {
                                             // pull a value
                                             velocityX = velocityXShuffler.PullNextItem();
@@ -415,7 +414,7 @@ namespace DataJuggler.RandomUSD
                                         forcePercent = forcePercentShuffler.PullNextItem();
 
                                         // if in range
-                                        if (forcePercent >= settings.ForcePercent)
+                                        if (forcePercent >= settings.ForcePercentReverse)
                                         {
                                             // pull a value
                                             velocityY = velocityYShuffler.PullNextItem();
@@ -437,7 +436,7 @@ namespace DataJuggler.RandomUSD
                                         forcePercent = forcePercentShuffler.PullNextItem();
 
                                         // if in range
-                                        if (forcePercent >= settings.ForcePercent)
+                                        if (forcePercent >= settings.ForcePercentReverse)
                                         {
                                             // pull a value
                                             velocityZ = velocityZShuffler.PullNextItem();
@@ -541,7 +540,7 @@ namespace DataJuggler.RandomUSD
                                                         forcePercent = forcePercentShuffler.PullNextItem();
 
                                                         // if in range
-                                                        if (forcePercent >= settings.ForcePercent)
+                                                        if (forcePercent >= settings.ForcePercentReverse)
                                                         {
                                                             // pull a value
                                                             forceX = forceXShuffler.PullNextItem();
@@ -563,7 +562,7 @@ namespace DataJuggler.RandomUSD
                                                         forcePercent = forcePercentShuffler.PullNextItem();
 
                                                         // if in range
-                                                        if (forcePercent >= settings.ForcePercent)
+                                                        if (forcePercent >= settings.ForcePercentReverse)
                                                         {
                                                             // pull a value
                                                             forceY = forceYShuffler.PullNextItem();
@@ -585,7 +584,7 @@ namespace DataJuggler.RandomUSD
                                                         forcePercent = forcePercentShuffler.PullNextItem();
 
                                                         // if in range
-                                                        if (forcePercent >= settings.ForcePercent)
+                                                        if (forcePercent >= settings.ForcePercentReverse)
                                                         {
                                                             // pull a value
                                                             forceZ = forceZShuffler.PullNextItem();
@@ -618,7 +617,7 @@ namespace DataJuggler.RandomUSD
                                                         forcePercent = forcePercentShuffler.PullNextItem();
 
                                                         // if in range
-                                                        if (forcePercent >= settings.ForcePercent)
+                                                        if (forcePercent >= settings.ForcePercentReverse)
                                                         {
                                                             // pull a value
                                                             velocityX = velocityXShuffler.PullNextItem();
@@ -640,7 +639,7 @@ namespace DataJuggler.RandomUSD
                                                         forcePercent = forcePercentShuffler.PullNextItem();
 
                                                         // if in range
-                                                        if (forcePercent >= settings.ForcePercent)
+                                                        if (forcePercent >= settings.ForcePercentReverse)
                                                         {
                                                             // pull a value
                                                             velocityY = velocityYShuffler.PullNextItem();
@@ -662,7 +661,7 @@ namespace DataJuggler.RandomUSD
                                                         forcePercent = forcePercentShuffler.PullNextItem();
 
                                                         // if in range
-                                                        if (forcePercent >= settings.ForcePercent)
+                                                        if (forcePercent >= settings.ForcePercentReverse)
                                                         {
                                                             // pull a value
                                                             velocityZ = velocityZShuffler.PullNextItem();

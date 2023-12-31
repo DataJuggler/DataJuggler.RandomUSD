@@ -6,6 +6,9 @@ You can add multiple snow scenes, and there is a property called Settings.Additi
 higher up in a scene, so you can longer duration of snow falling.
 
 # News
+12.31.2023: I added a read only property to Settings called ForcePercentReverse. It makes more sense to have ForcePercent
+apply where 100 equals all objects and 0 equals none. I changed Randomize method to use ForcePercentReverse.
+
 12.30.2023: I added a new feature for Force, and I also have a Blazor project to test this project called Snow Creator.
 
 Repository for Snow Creator:
