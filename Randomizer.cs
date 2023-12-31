@@ -62,12 +62,12 @@ namespace DataJuggler.RandomUSD
             }
             #endregion
             
-            #region Randomize(Settings settings)
+            #region Randomize(Settings settings, CallbackEvent callback)
             /// <summary>
             /// Randomly position objects in a USD file.
             /// </summary>
             /// <returns></returns>
-            public static RandomizationResult Randomize(Settings settings)
+            public static RandomizationResult Randomize(Settings settings, CallbackEvent callback)
             {
                 // initial value
                 RandomizationResult result = new RandomizationResult();
@@ -464,14 +464,34 @@ namespace DataJuggler.RandomUSD
                                     // Increment the value for insertIndex
                                     insertIndex++;
 
-                                    // Insert this line
+                                    // Insert a blank line
                                     lines.Insert(insertIndex, new TextLine());
+
+                                    // get a one percent value
+                                    int onePercent = (int) ((double) objectsToCreate * .01);
+
+                                    // used for progress
+                                    int progressPercent = 0;
 
                                     // iterate up to the number of objects to create
                                     for (int a = 0; a < objectsToCreate; a++)
                                     {
                                         // Increment the value for objectCount
                                         objectCount++;
+
+                                        // send a call back
+                                        if (objectCount % onePercent == 0)
+                                        {
+                                            // Increment the value for progressPercent
+                                            progressPercent++;
+
+                                            // if the callback delegate exists
+                                            if (NullHelper.Exists(callback))
+                                            {
+                                                // Send a status update
+                                                callback(progressPercent, false);
+                                            }
+                                        }
 
                                         // clone the lines                                
                                         List<TextLine> cloneOfObjectLines2 = TextHelper.CloneLines(cloneOfObjectLines);
@@ -688,6 +708,12 @@ namespace DataJuggler.RandomUSD
                                         }
                                     }
 
+                                    if (NullHelper.Exists(callback))
+                                    {
+                                        // Send a status update
+                                        callback(100, true);
+                                    }
+
                                     // Set the filePath
                                     string filePath = Path.Combine(settings.OutputFolderPath, settings.OutputFileName);
                                     filePath = FileHelper.CreateFileNameWithPartialGuid(filePath, 12);
@@ -717,12 +743,12 @@ namespace DataJuggler.RandomUSD
             }
             #endregion
 
-            #region RandomizeAsync(Settings settings)
+            #region RandomizeAsync(Settings settings, CallbackEvent callback)
             /// <summary>
             /// Randomly position objects in a USD file.
             /// </summary>
             /// <returns></returns>
-            public static async Task<RandomizationResult> RandomizeAsync(Settings settings)
+            public static async Task<RandomizationResult> RandomizeAsync(Settings settings, CallbackEvent callback)
             {
                 // initial value
                 RandomizationResult result = new RandomizationResult();
@@ -730,7 +756,7 @@ namespace DataJuggler.RandomUSD
                 try
                 {
                     // run async
-                    result = await Task.Run(() => Randomize(settings));
+                    result = await Task.Run(() => Randomize(settings, callback));
                 }
                 catch (Exception error)
                 {
